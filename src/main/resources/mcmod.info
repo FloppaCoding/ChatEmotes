@@ -1,0 +1,14 @@
+[
+  {
+    "modid": "chatemotes",
+    "name": "Chat Emotes",
+    "description": "Lets you use your favourite discord emotes in game.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Aton"
+    ]
+  }
+]
