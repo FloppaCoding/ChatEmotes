@@ -71,5 +71,5 @@ object EmoteHandler {
         "peepowo"      to "1005987434485534721",
     )
     private val regexString = emoteMap.keys.joinToString(":|:","(:",":)")
-    private val regex = Regex(regexString)
+    private val regex = Regex(regexString, RegexOption.IGNORE_CASE)
 }
