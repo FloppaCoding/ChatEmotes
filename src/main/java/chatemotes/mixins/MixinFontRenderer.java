@@ -34,6 +34,12 @@ public abstract class MixinFontRenderer {
 
     @Shadow protected abstract int renderString(String text, float x, float y, int color, boolean dropShadow);
 
+    /**
+     * This mixin will override the vanilla FontRenderer.drawString method whenever an emote is detected in the string
+     * that is about to be rendered.
+     * If so the string will be split up around the emotes and the emotes collected by a regex.
+     * From those two lists the string is then drawn.
+     */
     @Inject(method = {"drawString(Ljava/lang/String;FFIZ)I"}, at = {@At("HEAD")}, cancellable = true)
     public void drawCustomString(String text, float x, float y, int color, boolean dropShadow, CallbackInfoReturnable<Integer> cir) {
         if (!ChatEmotes.Companion.getConfig().getEnabled()) return;
@@ -90,7 +96,9 @@ public abstract class MixinFontRenderer {
     /**
      * Renders the emote from the given resource at the current position.
      * @param resource Resource location for the emote.
-     * @return The width of the rendered emote.
+     * @param x position for the emote.
+     * @param y position for the emote.
+     * @return The current x position where the next character has to be drawn.
      */
     private int renderEmote(ResourceLocation resource, float x, float y) {
 
