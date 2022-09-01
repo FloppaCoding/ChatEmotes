@@ -10,7 +10,7 @@ object EmoteHandler {
      */
     fun emoteMatches(text: String): List<String>{
         val matches = regex.findAll(text)
-        return matches.map { it.groupValues[1].removeSurrounding(":") }.toList()
+        return matches.map { it.groupValues[1].removeSurrounding(":").lowercase() }.toList()
     }
 
     /**
