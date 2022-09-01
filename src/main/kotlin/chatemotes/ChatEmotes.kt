@@ -43,8 +43,7 @@ class ChatEmotes {
     fun postInit(event: FMLLoadCompleteEvent) = runBlocking {
 
         launch {
-            // TODO load config
-
+            config.load()
         }
     }
 
