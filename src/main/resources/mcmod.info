@@ -5,8 +5,8 @@
     "description": "Lets you use your favourite discord emotes in game.",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "",
-    "updateUrl": "",
+    "url": "https://github.com/FloppaCoding/ChatEmotes",
+    "updateUrl": "https://github.com/FloppaCoding/ChatEmotes/releases",
     "authorList": [
       "Aton"
     ]
