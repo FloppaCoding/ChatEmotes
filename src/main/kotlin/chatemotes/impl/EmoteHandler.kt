@@ -8,7 +8,8 @@ object EmoteHandler {
     /**
      * Returns a list of all matches for the emote
      */
-    fun emoteMatches(text: String): List<String>{
+    fun emoteMatches(text: String?): List<String>{
+        if (text == null) return emptyList()
         val matches = regex.findAll(text)
         return matches.map { it.groupValues[1].removeSurrounding(":").lowercase() }.toList()
     }
