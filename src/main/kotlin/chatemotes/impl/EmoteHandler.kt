@@ -3,7 +3,33 @@ package chatemotes.impl
 import net.minecraft.util.ResourceLocation
 
 object EmoteHandler {
-    // A lot of the actual implementation is in the MixinFontRenderer to make accessing private methods and fields easier.
+    // A lot of the actual implementation is in the Mixins to make accessing private methods and fields easier.
+    // This Object provides some utility functions which i just cba to code in java.
+
+    /**
+     * Gets the possible start of an emote name from the text. Does not include the starting ":".
+     * @param text The text in the chat input field.
+     * @param pos The cursor position.
+     * @return Returns the substring of text left of the curse position and right of the closest ":" in the string.
+     * If nothing was found returns an empty string "".
+     */
+    fun getpossibleEmoteStart(text: String, pos: Int): String {
+        val beforeCursor = text.substring(0, pos)
+        return beforeCursor.substringAfterLast(":", "")
+    }
+
+    /**
+     * Returns an array containing all possible matches for emotes at position in text.
+     */
+    fun getEmoteCompletions(text: String, pos: Int) : Array<String> {
+        val startStr = getpossibleEmoteStart(text, pos)
+        if (startStr.isBlank()) return arrayOf()
+        val matcingKeys = emoteMap.keys.filter {
+            it.startsWith(startStr)
+        }.map { ":$it:" }
+
+        return matcingKeys.toTypedArray()
+    }
 
     /**
      * Returns a list of all matches for the emote

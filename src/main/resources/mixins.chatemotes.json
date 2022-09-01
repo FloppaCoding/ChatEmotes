@@ -5,6 +5,7 @@
   "refmap": "mixins.chatemotes.refmap.json",
   "mixins": [],
   "client": [
+    "GuiChatMixin",
     "MixinFontRenderer",
     "MixinGuiMainMenu",
     "MixinModList"
