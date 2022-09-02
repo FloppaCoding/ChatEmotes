@@ -32,6 +32,21 @@ object EmoteHandler {
     }
 
     /**
+     * Checks whether there is an emote right in front of pos in the given text.
+     */
+    fun isEmoteInfrontOfCursor(text: String, pos: Int): Boolean{
+        val beforeCursor = text.substring(0, pos)
+        return endsWithEmote(beforeCursor)
+    }
+
+    /**
+     * Checks whether all elements in the list are possible emotes by checking whether they all start and end with ":".
+     */
+    fun isOnlyEmotes(list: List<String>): Boolean{
+        return list.filter { it.startsWith(":") && it.endsWith(":") }.size == list.size
+    }
+
+    /**
      * Returns a list of all matches for the emote
      */
     fun emoteMatches(text: String?): List<String>{
@@ -50,6 +65,15 @@ object EmoteHandler {
      * False otherwise.
      */
     fun startsWithEmote(text: String) = regex.matchesAt(text,0)
+
+    /**
+     * Returns true if the given text ends with an emote.
+     * False otherwise.
+     */
+    fun endsWithEmote(text: String):Boolean {
+      val regex2 = Regex(".*?$regexString", RegexOption.IGNORE_CASE)
+        return regex2.matches(text)
+    }
 
     /**
      * Returns the resource location for the emote with the given name or null if no emote exists for that name.

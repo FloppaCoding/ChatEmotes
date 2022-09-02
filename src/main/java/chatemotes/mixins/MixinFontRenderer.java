@@ -34,6 +34,24 @@ public abstract class MixinFontRenderer {
 
     @Shadow protected abstract int renderString(String text, float x, float y, int color, boolean dropShadow);
 
+    @Shadow public abstract int getStringWidth(String text);
+
+    @Inject(method = {"getStringWidth(Ljava/lang/String;)I"}, at = @At("HEAD"), cancellable = true)
+    public void emoteStringWidth(String text, CallbackInfoReturnable<Integer> cir) {
+        if (!ChatEmotes.Companion.getConfig().getEnabled()) return;
+        List<String> matches = EmoteHandler.INSTANCE.emoteMatches(text);
+        if (matches.isEmpty()) return;
+
+        int i = matches.size() * this.FONT_HEIGHT;
+
+        List<String> surroundings = EmoteHandler.INSTANCE.splitText(text);
+
+        for (String surrounding : surroundings) {
+            i += this.getStringWidth(surrounding);
+        }
+        cir.setReturnValue(i);
+    }
+
     /**
      * This mixin will override the vanilla FontRenderer.drawString method whenever an emote is detected in the string
      * that is about to be rendered.
