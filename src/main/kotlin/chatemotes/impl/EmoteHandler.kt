@@ -168,7 +168,18 @@ object EmoteHandler {
         "thumbsdown"	            to "66e3cbf517993ee5261f23687a2bc032",
         "smirk"	                    to "480eb6b0f6c22cbc1d98d6ff93e1edc1",
         "floppadrip"	            to "1007308413602115605",
-
+        "fire"                    to "67069a13e006345ce28ecc581f2ed162",
+        "boom"                    to "d198f92b9911c7fdbb12baa694a819a2",
+        "angy"                    to "d3b48623c6a5915294f7278351b002da",
+        "pizza"                   to "aa0f4c1498e8a6b14b1e3417b601b5aa",
+        "yum"                     to "913e66b19410c0ca3e71fe837a29e093",
+        "brain"                   to "0bf5972bff8b8b4c26621bd5cd25d839",
+        "shush"                   to "acb7b1a237378bbddd34927b4001b8f4",
+        "yes"                     to "838801988241588304",
+        "no"                      to "838802013541498890",
+        "bangbang"                to "9a13b8821ec2c880981df4bf3ce07177",
+        "interrobang"             to "2cc6266229c7e2ccfde10e81782e8b5c",
+        "peeporelic"              to "1064400982592725044"
     )
     private val regexString = emoteMap.keys.joinToString(":|:","(:",":)")
     private val regex = Regex(regexString, RegexOption.IGNORE_CASE)
