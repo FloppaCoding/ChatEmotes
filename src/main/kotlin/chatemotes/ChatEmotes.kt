@@ -51,7 +51,7 @@ class ChatEmotes {
     companion object {
         const val MOD_ID = "chatemotes"
         const val MOD_NAME = "Chat Emotes"
-        const val MOD_VERSION = "0.0.2"
+        const val MOD_VERSION = "0.0.3"
 
         @JvmField
         val mc: Minecraft = Minecraft.getMinecraft()
